@@ -17,38 +17,40 @@ model Loja {
   createdAt         DateTime @default(now())
 }
 
-model Jogos {
-
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  titulo        String
-  preco         Float
-  dt_lancamento DateTime
-  generos       String[]
-  descricao     String
-  createdAt     DateTime @default(now())
-
-
-  carrinho   Carrinho? @relation(fields: [carrinhoId], references: [id])
-  carrinhoId String?   @db.ObjectId
-
-  Loja   Loja?   @relation(fields: [lojaId], references: [id])
-  lojaId String? @db.ObjectId
-}
-
-model Amigos {
-
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  nome      String
-  isOnline  Boolean
-  playing   String
-  createdAt DateTime @default(now())
-
-}
-
 model Carrinho {
 
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   userId    String
   jogos     Jogos[]
   createdAt DateTime @default(now())
+}
+
+model Jogos {
+
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  titulo        String
+  capa          String
+  photos        String[]
+  preco         Float
+  dt_lancamento DateTime
+  generos       String[]
+  descricao     String
+  createdAt     DateTime @default(now())
+
+  loja   Loja?   @relation(fields: [lojaId], references: [id])
+  lojaId String? @db.ObjectId
+
+  carrinho   Carrinho? @relation(fields: [carrinhoId], references: [id])
+  carrinhoId String?   @db.ObjectId
+}
+
+model Amigos {
+
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  avatar    String
+  nome      String
+  isOnline  Boolean
+  playing   String
+  createdAt DateTime @default(now())
+
 }

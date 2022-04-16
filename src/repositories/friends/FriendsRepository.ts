@@ -1,7 +1,7 @@
 import { Amigos } from "@prisma/client";
 import { prismaCliente } from "../../infra/prismCliente";
 import { ErrorHandler } from "../../utils";
-import { IFriendRepository } from "../protocols/IFriendRepository";
+import { IFriendRepository } from "../interface/IFriendRepository";
 
 
 

@@ -1,7 +1,7 @@
 import { Jogos } from "@prisma/client";
 import { prismaCliente } from "../../infra/prismCliente";
 import { ErrorHandler } from "../../utils/ErrorHandler";
-import { IGamesRepository } from "../protocols/IGamesRepository";
+import { IGamesRepository } from "../interface/IGamesRepository";
 
 
 
