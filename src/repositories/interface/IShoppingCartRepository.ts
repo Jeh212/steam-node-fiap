@@ -1,14 +1,17 @@
-import { Carrinho, Jogos } from "@prisma/client";
+import { Carrinho } from '@prisma/client';
 
-
+type IaddOrCreateNewCartResponse = {
+  msg: string;
+  cart: Carrinho;
+};
 
 interface IShoppingCartRepository {
-
-    addItem: (item: Jogos[], cartId: string, userId: string) => Promise<Carrinho>;
-    findCart: (cartId: string) => Promise<Carrinho | null>;
-    removeItem: (cartId: string) => Promise<Carrinho | null>;
-    deleteCart: (cartId: string) => Promise<void>;
+  updateCart: (userId: string, total: string) => Promise<void>;
+  addItem: (cart: Carrinho) => Promise<IaddOrCreateNewCartResponse>;
+  createCart: (cart: Carrinho) => Promise<IaddOrCreateNewCartResponse>;
+  findCart: (userId: string) => Promise<Carrinho | null>;
+  removeItem: (cart: Carrinho) => Promise<any>;
+  deleteCart: (cartId: string) => Promise<any>;
 }
-
 
 export { IShoppingCartRepository };
