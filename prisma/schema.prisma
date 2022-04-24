@@ -41,7 +41,7 @@ model Jogos {
   loja   Loja?   @relation(fields: [lojaId], references: [id])
   lojaId String? @db.ObjectId
 
-  carrinhoId String? @db.ObjectId
+
 }
 
 model Amigos {
@@ -53,4 +53,11 @@ model Amigos {
   playing   String
   createdAt DateTime @default(now())
 
+}
+
+model Usuario {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome           String
+  amigos         String[]
+  jogosComprados String[]
 }
