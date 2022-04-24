@@ -25,4 +25,8 @@ cartRouter.delete('/deleteCart/:id', (request: Request, response: Response) =>
   cartController.handleDeleteCart(request, response)
 );
 
+cartRouter.get('/userCart/:id', (request: Request, response: Response) =>
+  cartController.handleGetCart(request, response)
+);
+
 export { cartRouter };

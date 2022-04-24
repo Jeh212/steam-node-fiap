@@ -136,7 +136,22 @@ class ShoppingCartService {
       throw new ErrorHandler('Cart Not Found', 404);
     }
 
-    return findCart;
+    const jogoDetails: Jogos[] = [];
+
+    for (let i = 0; i < findCart.jogos.length; i++) {
+      const jogosId = findCart.jogos[i];
+
+      const jogos = await this.gamesRepository.getGame(jogosId);
+
+      jogoDetails.push(jogos);
+    }
+
+    const response = {
+      ...findCart,
+      jogos: jogoDetails,
+    };
+
+    return response;
   }
 
   async removeItemFromCart(userId: string, deleteJogoId: string) {

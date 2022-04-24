@@ -52,6 +52,14 @@ class ShoppingCartController {
       result,
     });
   }
+
+  async handleGetCart(request: Request, response: Response) {
+    const { userdId } = request.params;
+
+    const getCart = await this.shoppingCartService.findCart(userdId);
+
+    return response.json(getCart);
+  }
 }
 
 export { ShoppingCartController };
