@@ -10,6 +10,8 @@ class FriendsRepository implements IFriendRepository {
 
       return create;
     } catch (error) {
+      console.log(error);
+
       throw new ErrorHandler('Internal Server Error', 500);
     }
   }

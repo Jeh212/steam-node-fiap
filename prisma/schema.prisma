@@ -13,7 +13,7 @@ generator client {
 model Loja {
 
   id                String   @id @default(auto()) @map("_id") @db.ObjectId
-  destaquesDaSemana Jogos[]
+  destaquesDaSemana String[]
   createdAt         DateTime @default(now())
 }
 
@@ -37,11 +37,6 @@ model Jogos {
   generos       String[]
   descricao     String
   createdAt     DateTime @default(now())
-
-  loja   Loja?   @relation(fields: [lojaId], references: [id])
-  lojaId String? @db.ObjectId
-
-
 }
 
 model Amigos {

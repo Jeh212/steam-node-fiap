@@ -1,14 +1,20 @@
 import { ShoppingCartController } from '../controllers/cart/ShoppingCartController';
 import { FriendsController } from '../controllers/friends/FriendsController';
 import { GamesControllers } from '../controllers/games/GamesControllers';
+import { StoreController } from '../controllers/store/StoreController';
 import { UsersController } from '../controllers/users/UsersController';
+
 import { ShoppingCartRepository } from '../repositories/cart/ShoppingCartRepository';
 import { FriendsRepository } from '../repositories/friends/FriendsRepository';
 import { GamesRepository } from '../repositories/games/GamesRepository';
+import { StoreRepository } from '../repositories/store/StoreRepository';
 import { UsersRepository } from '../repositories/users/UsersRepository';
+
 import { ShoppingCartService } from '../services/cart/ShoppingCartService';
 import { FriendsService } from '../services/friends/FriendsService';
+
 import { GamesService } from '../services/games/GamesService';
+import { StoreServie } from '../services/store/StoreServie';
 import { UsersService } from '../services/users/UsersService';
 
 export function cartFacotories() {
@@ -41,5 +47,14 @@ export function userFactories() {
   const usersRepository = new UsersRepository();
   const usersService = new UsersService(usersRepository);
   const usersController = new UsersController(usersService);
+
   return usersController;
+}
+
+export function storeFactories() {
+  const storeRepository = new StoreRepository();
+  const storeService = new StoreServie(storeRepository);
+  const storeController = new StoreController(storeService);
+
+  return storeController;
 }
