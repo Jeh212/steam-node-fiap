@@ -4,16 +4,24 @@ import { ErrorHandler } from '../../utils';
 import { IUsersRepository } from '../interface/IUsersRepository';
 
 class UsersRepository implements IUsersRepository {
-  async create(data: Usuario): Promise<Usuario> {
+  async create({
+    amigos,
+    jogosComprados,
+    nome,
+    id,
+  }: Usuario): Promise<Usuario> {
     try {
       const creatUser = await prismaCliente.usuario.create({
-        data,
+        data: {
+          amigos,
+          jogosComprados,
+          nome,
+          id,
+        },
       });
 
       return creatUser;
     } catch (error) {
-      console.log(error);
-
       throw new ErrorHandler('Internal Server Error', 500);
     } finally {
       await prismaCliente.$disconnect();
