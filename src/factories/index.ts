@@ -53,7 +53,9 @@ export function userFactories() {
 
 export function storeFactories() {
   const storeRepository = new StoreRepository();
-  const storeService = new StoreServie(storeRepository);
+  const gamesRepository = new GamesRepository();
+
+  const storeService = new StoreServie(storeRepository, gamesRepository);
   const storeController = new StoreController(storeService);
 
   return storeController;

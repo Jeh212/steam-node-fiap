@@ -16,8 +16,6 @@ class StoreController {
   async handlerGetWeekDeal(request: Request, response: Response) {
     const { id } = request.params;
 
-    console.log(id);
-
     const getWeek = await this.storeServie.getWeekDeals(id);
 
     return response.json(getWeek);

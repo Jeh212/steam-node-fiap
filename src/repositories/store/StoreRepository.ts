@@ -12,8 +12,6 @@ class StoreRepository implements IStoreRepository {
 
       return create;
     } catch (error) {
-      console.log(error);
-
       throw new ErrorHandler('Internal Server Error', 500);
     } finally {
       await prismaCliente.$disconnect();
@@ -26,7 +24,6 @@ class StoreRepository implements IStoreRepository {
           id: weekDealId,
         },
       });
-      console.log('akiii', getWeek);
 
       return getWeek;
     } catch (error) {
